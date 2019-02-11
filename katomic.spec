@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : katomic
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/katomic-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/katomic-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/katomic-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/katomic-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/katomic-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/katomic-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: katomic-bin
-Requires: katomic-data
-Requires: katomic-license
-Requires: katomic-locales
+Requires: katomic-bin = %{version}-%{release}
+Requires: katomic-data = %{version}-%{release}
+Requires: katomic-license = %{version}-%{release}
+Requires: katomic-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 Levels are stored in level sets. Level set has a simple ini-file format which includes:
@@ -28,8 +28,8 @@ Levels are stored in level sets. Level set has a simple ini-file format which in
 %package bin
 Summary: bin components for the katomic package.
 Group: Binaries
-Requires: katomic-data
-Requires: katomic-license
+Requires: katomic-data = %{version}-%{release}
+Requires: katomic-license = %{version}-%{release}
 
 %description bin
 bin components for the katomic package.
@@ -68,26 +68,26 @@ locales components for the katomic package.
 
 
 %prep
-%setup -q -n katomic-18.08.0
+%setup -q -n katomic-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535426062
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549862379
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535426062
+export SOURCE_DATE_EPOCH=1549862379
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/katomic
-cp COPYING %{buildroot}/usr/share/doc/katomic/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/katomic/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/katomic
+cp COPYING %{buildroot}/usr/share/package-licenses/katomic/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/katomic/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -149,9 +149,9 @@ popd
 /usr/share/doc/HTML/uk/katomic/mainscreen.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/katomic/COPYING
-/usr/share/doc/katomic/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/katomic/COPYING
+/usr/share/package-licenses/katomic/COPYING.DOC
 
 %files locales -f katomic.lang
 %defattr(-,root,root,-)
