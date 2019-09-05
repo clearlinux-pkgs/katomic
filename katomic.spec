@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : katomic
-Version  : 19.08.0
-Release  : 12
-URL      : https://download.kde.org/stable/applications/19.08.0/src/katomic-19.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.0/src/katomic-19.08.0.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.0/src/katomic-19.08.0.tar.xz.sig
+Version  : 19.08.1
+Release  : 13
+URL      : https://download.kde.org/stable/applications/19.08.1/src/katomic-19.08.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.1/src/katomic-19.08.1.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.1/src/katomic-19.08.1.tar.xz.sig
 Summary  : A fun and educational game built around molecular geometry
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -23,7 +23,8 @@ BuildRequires : libkdegames-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
-Levels are stored in level sets. Level set has a simple ini-file format which includes:
+This file describes how to create a new KAtomic theme.
+(Last update: 29.05.2007 by dimsuz)
 
 %package bin
 Summary: bin components for the katomic package.
@@ -68,14 +69,14 @@ locales components for the katomic package.
 
 
 %prep
-%setup -q -n katomic-19.08.0
+%setup -q -n katomic-19.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565894233
+export SOURCE_DATE_EPOCH=1567695710
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -92,7 +93,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1565894233
+export SOURCE_DATE_EPOCH=1567695710
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/katomic
 cp COPYING %{buildroot}/usr/share/package-licenses/katomic/COPYING
