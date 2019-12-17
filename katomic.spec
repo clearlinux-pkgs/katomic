@@ -6,7 +6,7 @@
 #
 Name     : katomic
 Version  : 19.12.0
-Release  : 16
+Release  : 17
 URL      : https://download.kde.org/stable/release-service/19.12.0/src/katomic-19.12.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/19.12.0/src/katomic-19.12.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/19.12.0/src/katomic-19.12.0.tar.xz.sig
