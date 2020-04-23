@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : katomic
-Version  : 19.12.3
-Release  : 20
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/katomic-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/katomic-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/katomic-19.12.3.tar.xz.sig
+Version  : 20.04.0
+Release  : 21
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/katomic-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/katomic-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/katomic-20.04.0.tar.xz.sig
 Summary  : A fun and educational game built around molecular geometry
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -23,7 +23,8 @@ BuildRequires : libkdegames-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
-Levels are stored in level sets. Level set has a simple ini-file format which includes:
+This file describes how to create a new KAtomic theme.
+(Last update: 29.05.2007 by dimsuz)
 
 %package bin
 Summary: bin components for the katomic package.
@@ -68,15 +69,15 @@ locales components for the katomic package.
 
 
 %prep
-%setup -q -n katomic-19.12.3
-cd %{_builddir}/katomic-19.12.3
+%setup -q -n katomic-20.04.0
+cd %{_builddir}/katomic-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583437526
+export SOURCE_DATE_EPOCH=1587676347
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -93,11 +94,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583437526
+export SOURCE_DATE_EPOCH=1587676347
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/katomic
-cp %{_builddir}/katomic-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/katomic/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/katomic-19.12.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/katomic/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/katomic-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/katomic/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/katomic-20.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/katomic/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
@@ -125,6 +126,7 @@ popd
 /usr/share/kconf_update/katomic-levelset.upd
 /usr/share/kxmlgui5/katomic/katomicui.rc
 /usr/share/metainfo/org.kde.katomic.appdata.xml
+/usr/share/qlogging-categories5/katomic.categories
 /usr/share/xdg/katomic.knsrc
 
 %files doc
